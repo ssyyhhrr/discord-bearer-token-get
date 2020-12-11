@@ -1,0 +1,24 @@
+<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+    <div id="title">Enter Discord Token:</div>
+    <input id="token" type="text" name="token">
+    <button type="submit" name="submit" onclick="submit()">Submit</button>
+    <div id="response"></div>
+</div>
+<script>
+    function submit() {
+        var input = document.getElementById("token").value;
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://discordapp.com/api/users/@me', true);
+        xhr.setRequestHeader('Authorization', `Bearer ${input}`)
+        xhr.onload = function () {
+            if (xhr.response == '{"message": "401: Unauthorized", "code": 0}') {
+                document.getElementById("response").innerHTML = "<br />Invalid token!"
+            }
+            else {
+                document.getElementById("response").innerHTML = `<br />${(xhr.response)}`
+            }
+        }
+        xhr.send();
+
+    }
+</script>
