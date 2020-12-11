@@ -1,4 +1,4 @@
-## Discord Bearer Token Checker
+## Discord Bearer Token Get
 
 A simple tool to perform a GET request to the Discord OAuth2 API with a Bearer token.
 
